@@ -103,7 +103,26 @@ c.stroke();
 
 //Desafio desenhos 
     
-      // Exemplo de curvas de Bézier cúbicas
+//Estrela 
+ctx.fillStyle = gerar_cor_hexadecimal();
+ctx.beginPath();
+ ctx.moveTo(108,0.0);
+ ctx.lineTo(141, 70);
+ ctx.lineTo(218, 78.3);
+ ctx.lineTo(162, 131);
+ ctx.lineTo(175, 205);
+ ctx.lineTo(108, 170);
+ ctx.lineTo(41.2, 205);
+ ctx.lineTo(55, 131);
+ ctx.lineTo(1, 78);
+ ctx.lineTo(75, 68);
+ ctx.lineTo(108, 0);
+ ctx.closePath();
+ ctx.fill();
+
+
+      // Coracao
+      ctx.fillStyle = gerar_cor_hexadecimal();
       ctx.beginPath();
       ctx.moveTo(75,40);
       ctx.bezierCurveTo(75,37,70,25,50,25);
@@ -115,7 +134,10 @@ c.stroke();
       ctx.fill();
     
 
-      ctx.transform( 1 , 0 , 0 , -1 , canvas.width * 0.5 , canvas.height * 0.5 ); // more info at https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/transform
+      
+// 
+
+ctx.transform( 1 , 0 , 0 , -1 , canvas.width * 0.5 , canvas.height * 0.5 ); // more info at https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/transform
 ctx.save( ); // stores canvas state - importantly it saves the direction of y-axis increasing
 
 /* mark the origin for reference */

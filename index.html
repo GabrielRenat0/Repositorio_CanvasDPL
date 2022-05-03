@@ -2,6 +2,8 @@
 <html lang="en">
 
 </head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <title>Canvas Renatin Delicia</title>
 <head>
 <meta charset="UTF-8">
@@ -25,8 +27,17 @@ border: 5px solid rgb(198, 0, 253) ;
 </head>
 
 <body>
+    
+        <input type="button" class="btn btn-outline-primary" id="Orientaçao X" value="Orientaçao X" onclick="animateX()">
+        <input type="button" class="btn btn-outline-warning" id="Orientaçao Y" value="Orientaçao Y" onclick="animateY()">
+        <input type="button" class="btn btn-outline-danger" id="Pare" value="Pare" onclick="Pare()">
+   
+   
+   
     <canvas></canvas>
     <script src="Canvas.js"></script>
+   
+    
 </body>
 
 <html>

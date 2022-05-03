@@ -2,11 +2,70 @@ var canvas = document.querySelector('canvas');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 var ctx = canvas.getContext('2d');
-var x = 75;
-var y = 50;
-var auxX = 0;
+var x = 200;
+var y = 100;
+var auxX = 50;
 var auxY = 0;
 
+
+
+function Pare(){
+  requestAnimationFrame(Pare)
+  ctx.clearRect(0,0,innerWidth,innerHeight);
+  ctx.fillStyle = 'rgba(0,255,0,0.5)'; //Escolhe a cor
+  ctx.fillRect(200, 200, 200, 200); //Posiciona em X, Y e depois o tamanho
+}
+Pare();
+
+
+function animateX(){
+requestAnimationFrame(animateX)
+
+ctx.clearRect(0,0,innerWidth,innerHeight);
+
+ctx.fillStyle = 'rgba(0,255,0,0.5)'; //Escolhe a cor
+ctx.fillRect(x, 200, 200, 200); //Posiciona em X, Y e depois o tamanho
+
+if((x+200) > innerWidth){
+auxX = -auxX
+}
+
+else if (x<0)
+auxX = - auxX
+x = x+auxX
+}
+auxX=auxX+20
+
+animateX();
+
+
+
+function animateY(){
+  requestAnimationFrame(animateY)
+  
+  ctx.clearRect(0,0,innerWidth,innerHeight);
+  
+  ctx.fillStyle = 'rgba(0,255,0,0.5)'; //Escolhe a cor
+  ctx.fillRect(200, y, 200, 200); //Posiciona em X, Y e depois o tamanho
+  
+  if((y+200) > innerWidth){
+  auxY = -auxY
+  }
+  
+  else if (y<0)
+  auxY = - auxY
+  y = y+auxY
+  }
+  auxY=auxY+20
+  
+  animateY();
+
+
+
+
+
+
+/*
 function gerar_cor_hexadecimal() {
     return '#' + parseInt((Math.random() * 0xFFF))
         .toString(16)
@@ -22,21 +81,21 @@ for (var i = 0; i < 10; i++) {
     auxY = y + auxY
     
     //Quadrado
-    c.fillStyle = 'rgba(0,255,0,0.5)'; //Escolhe a cor
-    c.fillRect(auxX, auxY, 25, 25); //Posiciona em X, Y e depois o tamanho
+    ctx.fillStyle = 'rgba(0,255,0,0.5)'; //Escolhe a cor
+    ctx.fillRect(auxX, auxY, 25, 25); //Posiciona em X, Y e depois o tamanho
 
     //Linha
-    c.beginPath(); //InÃ­cio do comando
-    c.moveTo(auxX,y); //InÃ­cio da linha
-    c.lineTo(x,auxY); //Final da linha
-    c.strokeStyle = "purple"; //DefiniÃ§Ã£o da cor
-    c.stroke(); //Executa o desenho
+    ctx.beginPath(); //InÃ­cio do comando
+    ctx.moveTo(auxX,y); //InÃ­cio da linha
+    ctx.lineTo(x,auxY); //Final da linha
+    ctx.strokeStyle = "purple"; //DefiniÃ§Ã£o da cor
+    ctx.stroke(); //Executa o desenho
 
     //CÃ­rculo
-    c.beginPath();
-    c.arc(auxX, 400, 20, 0, Math.PI * 15, false);
-    c.strokeStyle = "red";
-    c.stroke();
+    ctx.beginPath();
+    ctx.arc(auxX, 400, 20, 0, Math.PI * 15, false);
+    ctx.strokeStyle = "red";
+    ctx.stroke();
 
 }
 */
@@ -48,21 +107,21 @@ for (var i = 0; i < 10; i++) {
     auxY = Math.random()*150 + Math.random()*300; //Reposiciona em Y
 
     //Quadrado
-    c.fillStyle = "blue"; //Escolhe a cor
-    c.fillRect(auxX, auxY, 25, 25); //Posiciona em X, Y e depois o tamanho
+    ctx.fillStyle = "blue"; //Escolhe a cor
+    ctx.fillRect(auxX, auxY, 25, 25); //Posiciona em X, Y e depois o tamanho
 
     //Linha
-    c.beginPath(); //InÃ­cio do comando
-    c.moveTo(auxX-Math.random()*50, x+auxX); //InÃ­cio da linha
-    c.lineTo(auxX-Math.random()*50, y+auxY); //Final da linha
-    c.strokeStyle = "purple"; //DefiniÃ§Ã£o da cor
-    c.stroke(); //Executa o desenho
+    ctx.beginPath(); //InÃ­cio do comando
+    ctx.moveTo(auxX-Math.random()*50, x+auxX); //InÃ­cio da linha
+    ctx.lineTo(auxX-Math.random()*50, y+auxY); //Final da linha
+    ctx.strokeStyle = "purple"; //DefiniÃ§Ã£o da cor
+    ctx.stroke(); //Executa o desenho
 
     //CÃ­rculo
-    c.beginPath();
-    c.arc(auxX, auxY*Math.random()*5, 20, 0, Math.PI * 15, false);
-    c.strokeStyle = "red";
-    c.stroke();
+    ctx.beginPath();
+    ctx.arc(auxX, auxY*Math.random()*5, 20, 0, Math.PI * 15, false);
+    ctx.strokeStyle = "red";
+    ctx.stroke();
 }
 */
 
@@ -75,32 +134,33 @@ for (var i = 0; i < 10; i ++) {
     auxY = Math.random() * 150 + Math.random() * 300; //Reposiciona em Y
 
     //Quadrado
-    c.fillStyle = gerar_cor_hexadecimal(); //Escolhe a cor
-    c.fillRect(auxX, auxY, 25, 25); //Posiciona em X, Y e depois o tamanho
+    ctx.fillStyle = gerar_cor_hexadecimal(); //Escolhe a cor
+    ctx.fillRect(auxX, auxY, 25, 25); //Posiciona em X, Y e depois o tamanho
 
     //Linha
-    c.beginPath(); //InÃ­cio do comando
-    c.moveTo(auxX - Math.random() * 50, x + auxX); //InÃ­cio da linha
-    c.lineTo(auxX - Math.random() * 50, y + auxY); //Final da linha
-    c.strokeStyle = gerar_cor_hexadecimal(); //DefiniÃ§Ã£o da cor
-    c.stroke(); //Executa o desenho
+    ctx.beginPath(); //InÃ­cio do comando
+    ctx.moveTo(auxX - Math.random() * 50, x + auxX); //InÃ­cio da linha
+    ctx.lineTo(auxX - Math.random() * 50, y + auxY); //Final da linha
+    ctx.strokeStyle = gerar_cor_hexadecimal(); //DefiniÃ§Ã£o da cor
+    ctx.stroke(); //Executa o desenho
 
     //CÃ­rculo
-    c.beginPath();
-    c.arc(auxX, auxY * Math.random() * 5, 20, 0, Math.PI * 2, false);
-    c.strokeStyle = gerar_cor_hexadecimal();
-    c.stroke();
+    ctx.beginPath();
+    ctx.arc(auxX, auxY * Math.random() * 5, 20, 0, Math.PI * 2, false);
+    ctx.strokeStyle = gerar_cor_hexadecimal();
+    ctx.stroke();
 }
 */
 /*
 //Desafio 4
 //CÃ­rculo
-c.beginPath();
-c.arc(x, y, Math.random()*20, 0, Math.PI * 2, false);
-c.strokeStyle = "blue";
-c.stroke();
+ctx.beginPath();
+ctx.arc(x, y, Math.random()*20, 0, Math.PI * 2, false);
+ctx.strokeStyle = "blue";
+ctx.stroke();
 */
 
+/*
 //Desafio desenhos 
     
 //Estrela 
@@ -140,11 +200,11 @@ ctx.beginPath();
 ctx.transform( 1 , 0 , 0 , -1 , canvas.width * 0.5 , canvas.height * 0.5 ); // more info at https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/transform
 ctx.save( ); // stores canvas state - importantly it saves the direction of y-axis increasing
 
-/* mark the origin for reference */
+
 ctx.fillStyle = 'red';
 ctx.fillRect( -2 , -2 , 4 , 4 );
 
-/* marks a simple axis */
+
 ctx.beginPath( );
 ctx.moveTo( canvas.width * -0.5, 0 );
 ctx.lineTo( canvas.width * 0.5, 0 );
@@ -153,7 +213,7 @@ ctx.lineTo( 0, canvas.width * 0.5 );
 ctx.strokeStyle = '#F5F5F5';
 ctx.stroke( );
 
-/* draw author watermark text on canvas */
+
 ctx.scale( 1, -1 ); // makes y-axis increasing downwards so text can be written upright
 ctx.font = '15px Arial';
 var authorName = 'RENATIN LINDO';
@@ -163,7 +223,7 @@ ctx.textBaseline = 'bottom'; // allows to be manpulated from bottom-left
 ctx.fillText( authorName, ( authorNameMeasured.width * -0.5 ), ( canvas.height * 0.5 - 25 ) ); // positions author attribute
 ctx.restore( ); // makes y-axis increasing upwards again
 
-/* define the pencil properties */
+
 var pencil = {
   'thickness': 1, // thickness of line
   'color': {
@@ -177,13 +237,13 @@ var pencil = {
   }
 };
 
-/* customise output */
+
 a = 40; // bat-scale (batman logo scale) or known as arbitary constant in mathematics
 
 var graph = {
   'step': 0.5, // decrease step value to get greater points plotted but will cause browser lag due to increase in number of calculations 0.1 gives best result
   plot: function( curveObject ) {
-      /* equation is drawn via an interation method - same concept as plotting known coordinates on a graph */
+      
       ctx.beginPath( );
       ctx.lineWidth = pencil.thickness;
       ctx.strokeStyle = curveObject.pencilColor; // allows stroke to have a custom color
@@ -207,12 +267,12 @@ var graph = {
     };
   },
   clear: function( ) {
-    /* clears the canvas if needed */
+    
       ctx.clearRect( canvas.width * -0.5 , canvas.height * -0.5 , canvas.width , canvas.height );
   }
 };
 
-/* I was thinking about creating new objects to acheive the same result more efficiently and minifying code */
+
 
 var curve_1 = {
   'inequalityFor': 'y_axis',
@@ -335,10 +395,12 @@ var curve_12 = {
 };
 
 function drawBatLogo( curveArray ) {
-  /* call draw method of graph object to outpout curves on canvas */
+  
   for( var i = 0; i < curveArray.length; i++ ) {
     graph.plot( curveArray[i] );
   };
 };
 
 drawBatLogo( [curve_1, curve_2, curve_3, curve_4, curve_5, curve_6, curve_7, curve_8, curve_9, curve_10, curve_11, curve_12] );
+
+*/
